@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4nlbfxbjr1dh"]
+[gd_scene load_steps=5 format=3 uid="uid://b4nlbfxbjr1dh"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_miis1"]
 [ext_resource type="Texture2D" uid="uid://b7eq47jvjxoag" path="res://icon.svg" id="2_2in4n"]
@@ -6,8 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2e2q"]
 size = Vector2(52, 52)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5e012"]
+radius = 67.0075
+
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(606, 300)
 script = ExtResource("1_miis1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,3 +18,8 @@ texture = ExtResource("2_2in4n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_a2e2q")
+
+[node name="InteractionRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRange"]
+shape = SubResource("CircleShape2D_5e012")

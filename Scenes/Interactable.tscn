@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://taelpv7r0iyp"]
+
+[ext_resource type="Texture2D" uid="uid://b7eq47jvjxoag" path="res://icon.svg" id="1_1gqqt"]
+[ext_resource type="Script" path="res://Scripts/Interactables/Interactable.gd" id="1_8na8t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u6w8k"]
+radius = 17.0
+
+[node name="Interactable" type="Area2D"]
+script = ExtResource("1_8na8t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u6w8k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 0.356863, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_1gqqt")

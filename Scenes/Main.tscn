@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c61atydtdnyt8"]
+[gd_scene load_steps=4 format=3 uid="uid://c61atydtdnyt8"]
 
 [ext_resource type="PackedScene" uid="uid://b4nlbfxbjr1dh" path="res://Scenes/Player.tscn" id="1_xjs6k"]
 [ext_resource type="PackedScene" uid="uid://taelpv7r0iyp" path="res://Scenes/Interactable.tscn" id="2_5t52j"]
+[ext_resource type="Resource" uid="uid://kijxglja5otd" path="res://Dialogues/main.dialogue" id="3_mpyvq"]
 
 [node name="Main" type="Node2D"]
 
@@ -10,3 +11,5 @@ position = Vector2(223, 137)
 
 [node name="Interactable" parent="." instance=ExtResource("2_5t52j")]
 position = Vector2(81, 61)
+dialogue_resource = ExtResource("3_mpyvq")
+dialogue_start = "hello_from_a_stranger"

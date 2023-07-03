@@ -1,0 +1,11 @@
+~ hello_from_a_stranger
+
+Unknown: Booo!
+Player: Who was that?!
+Unknown: [[I don't know|Wind|You!]]
+Player: I should...
+- ask again but angrier!
+	Unknown: [i]Crying[/i]
+- hide and watch => hello_from_a_stranger
+- leave => END
+=> END

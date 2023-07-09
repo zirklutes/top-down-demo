@@ -28,6 +28,8 @@ func _physics_process(_delta):
 func on_area_entered(area):
 	if area is Interactable:
 		current_interactable = area
+	else:
+		area.change_scene()
 
 func on_area_exited(area):
 	if area is Interactable:

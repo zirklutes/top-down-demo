@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://y387qnf22joa"]
+[gd_scene load_steps=13 format=3 uid="uid://y387qnf22joa"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_4upbw"]
 [ext_resource type="PackedScene" uid="uid://b4nlbfxbjr1dh" path="res://Scenes/Player.tscn" id="1_xjs6k"]
@@ -6,8 +6,8 @@
 [ext_resource type="Resource" uid="uid://kijxglja5otd" path="res://Dialogues/main.dialogue" id="3_mpyvq"]
 [ext_resource type="Script" path="res://Scripts/Interactables/Talkable.gd" id="4_61tsl"]
 [ext_resource type="PackedScene" uid="uid://5dq6f1dhcl2w" path="res://Scenes/NpcScientist.tscn" id="4_icf03"]
-[ext_resource type="Texture2D" uid="uid://b7eq47jvjxoag" path="res://icon.svg" id="5_800b4"]
 [ext_resource type="Script" path="res://Scripts/Interactables/Teleporter.gd" id="6_2cafa"]
+[ext_resource type="Texture2D" uid="uid://4m5ubygkmrf" path="res://Resources/Graphics/Igloo.png" id="7_sgqan"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6vanx"]
 vertices = PackedVector2Array(315, 209, 538, 179, 722, 196, 647, 330, 393, 312, 269, 285, 598, 478, 779, 448, 684, 561, 564, 540, 344, 519, 479, 555, 205, 534, 408, 587, 290, 619, 213, 601, 277, 374, 156, 352, 38, 520, 43, 384, 126, 598, 65, 571, 393, 58, 543, 29, 304, 49, 236, 162, 158, 52, 229, 38, 151, 202, 93, 113, 48, 253, 144, 284)
@@ -15,10 +15,23 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedIn
 outlines = Array[PackedVector2Array]([PackedVector2Array(65, 571, 126, 598, 213, 601, 290, 619, 408, 587, 479, 555, 564, 540, 684, 561, 779, 448, 722, 196, 538, 179, 543, 29, 393, 58, 304, 49, 229, 38, 158, 52, 93, 113, 48, 253, 43, 384, 38, 520), PackedVector2Array(277, 374, 205, 534, 344, 519, 598, 478, 647, 330, 393, 312), PackedVector2Array(315, 209, 236, 162, 151, 202, 144, 284, 156, 352, 269, 285)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32hpn"]
-size = Vector2(13.6962, 60.1852)
+size = Vector2(57, 23.0926)
+
+[sub_resource type="Curve" id="Curve_xkryh"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0949259, 0.997952), 0.0, 0.0, 0, 0, Vector2(0.709426, 0.605072), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_t85xy"]
+offsets = PackedFloat32Array(0, 0.125828, 0.887417, 1)
+colors = PackedColorArray(0.180392, 0.180392, 0.180392, 0, 0.408329, 0.408329, 0.408329, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Main" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_4upbw")
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(256, 354)
+scale = Vector2(0.224, 0.224)
 
 [node name="Player" parent="." instance=ExtResource("1_xjs6k")]
 position = Vector2(692, 307)
@@ -30,6 +43,7 @@ dialogue_resource = ExtResource("3_mpyvq")
 dialogue_start = "start"
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_6vanx")
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -39,19 +53,37 @@ position = Vector2(627, 306)
 position = Vector2(92, 535)
 target = NodePath("../Marker2D")
 
-[node name="CampEntry" type="Area2D" parent="."]
+[node name="Igloo" type="Sprite2D" parent="."]
+position = Vector2(250.591, 223.679)
+scale = Vector2(0.224, 0.224)
+texture = ExtResource("7_sgqan")
+
+[node name="CampEntry" type="Area2D" parent="Igloo"]
+position = Vector2(-1118.71, -998.567)
+scale = Vector2(4.46429, 4.46429)
 script = ExtResource("6_2cafa")
 target_scene = "res://Scenes/Camp.tscn"
-target_coordinate = Vector2(562, 602)
+target_coordinate = Vector2(580, 580)
 
-[node name="Sprite2D" type="Sprite2D" parent="CampEntry"]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(250.591, 223.679)
-rotation = 0.523598
-scale = Vector2(0.743902, 0.705706)
-texture = ExtResource("5_800b4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CampEntry"]
-position = Vector2(291.476, 249.032)
-rotation = -2.61799
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Igloo/CampEntry"]
+position = Vector2(256.5, 312)
 shape = SubResource("RectangleShape2D_32hpn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Igloo"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Igloo/StaticBody2D"]
+polygon = PackedVector2Array(-605.317, 273.754, -565.138, 10.3616, -431.21, -230.71, -248.174, -266.424, 126.826, -266.424, 372.362, -230.71, 483.969, -172.674, 524.147, -61.067, 564.326, 37.1473, 595.576, 144.29, 600.04, 260.362, 488.433, 367.504, 260.755, 425.54, 256.29, 479.112, 198.255, 483.576, 189.326, 313.933, -145.495, 309.469, -154.424, 474.647, -207.995, 470.183, -212.46, 425.54, -399.96, 403.219)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Igloo"]
+position = Vector2(42.0045, -431.603)
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(100, 1)
+direction = Vector2(2.08165e-12, 1)
+gravity = Vector2(2.08165e-12, -100)
+initial_velocity_min = 60.0
+initial_velocity_max = 60.0
+scale_amount_min = 26.25
+scale_amount_max = 26.25
+scale_amount_curve = SubResource("Curve_xkryh")
+color_ramp = SubResource("Gradient_t85xy")

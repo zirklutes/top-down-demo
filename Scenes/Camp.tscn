@@ -1,13 +1,18 @@
 [gd_scene load_steps=5 format=3 uid="uid://hrv1gabcbw82"]
 
 [ext_resource type="PackedScene" uid="uid://b4nlbfxbjr1dh" path="res://Scenes/Player.tscn" id="1_hlycq"]
-[ext_resource type="Texture2D" uid="uid://b7eq47jvjxoag" path="res://icon.svg" id="2_51kgv"]
+[ext_resource type="Texture2D" uid="uid://rbpuorygflsc" path="res://Resources/Graphics/Igloo_Inside.png" id="1_jnlm5"]
 [ext_resource type="Script" path="res://Scripts/Interactables/Teleporter.gd" id="2_l8kf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbajc"]
 size = Vector2(210, 46)
 
 [node name="Camp" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(634, 420)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_jnlm5")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 484.0
@@ -17,18 +22,20 @@ offset_bottom = 90.0
 text = "Camp scene"
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("1_hlycq")]
-position = Vector2(562, 602)
+position = Vector2(576, 562)
+scale = Vector2(2, 2)
 
 [node name="CampExit" type="Area2D" parent="."]
-position = Vector2(564, 656)
+position = Vector2(631, 677)
 script = ExtResource("2_l8kf8")
 target_scene = "res://Scenes/Main.tscn"
-target_coordinate = Vector2(350, 286)
-
-[node name="Sprite2D" type="Sprite2D" parent="CampExit"]
-modulate = Color(0, 0, 0, 1)
-scale = Vector2(1.625, 0.359375)
-texture = ExtResource("2_51kgv")
+target_coordinate = Vector2(256, 354)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CampExit"]
 shape = SubResource("RectangleShape2D_gbajc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+visible = false
+polygon = PackedVector2Array(539, 700, 419, 670, 305, 597, 261, 511, 276, 439, 344, 370, 446, 325, 540, 303, 628, 300, 720, 306, 806, 328, 898, 374, 966, 441, 977, 517, 945, 592, 847, 666, 735, 701, 546, 701, 548, 721, 1146, 721, 1146, 52, 92, 42, 80, 721, 539, 723)

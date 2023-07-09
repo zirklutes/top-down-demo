@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4nlbfxbjr1dh"]
+[gd_scene load_steps=6 format=3 uid="uid://b4nlbfxbjr1dh"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_miis1"]
-[ext_resource type="Texture2D" uid="uid://b7eq47jvjxoag" path="res://icon.svg" id="2_2in4n"]
+[ext_resource type="Texture2D" uid="uid://dk46gmjxstql5" path="res://Resources/Graphics/Player/character_femaleAdventurer_sheet.png" id="2_1ad2c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psbu4"]
+atlas = ExtResource("2_1ad2c")
+region = Rect2(16, 33, 64, 95)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2e2q"]
-size = Vector2(52, 52)
+size = Vector2(36, 35)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5e012"]
 radius = 26.0768
@@ -14,10 +18,12 @@ position = Vector2(1, 0)
 script = ExtResource("1_miis1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_2in4n")
+position = Vector2(0, -3)
+scale = Vector2(0.6, 0.6)
+texture = SubResource("AtlasTexture_psbu4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_a2e2q")
 
 [node name="InteractionRange" type="Area2D" parent="."]

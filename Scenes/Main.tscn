@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://taelpv7r0iyp" path="res://Scenes/Interactable.tscn" id="2_5t52j"]
 [ext_resource type="Resource" uid="uid://kijxglja5otd" path="res://Dialogues/main.dialogue" id="3_mpyvq"]
 [ext_resource type="PackedScene" uid="uid://5dq6f1dhcl2w" path="res://Scenes/NpcScientist.tscn" id="4_icf03"]
-[ext_resource type="Script" path="res://Scripts/Interactables/CampEntry.gd" id="5_85b4c"]
 [ext_resource type="Texture2D" uid="uid://b7eq47jvjxoag" path="res://icon.svg" id="5_800b4"]
+[ext_resource type="Script" path="res://Scripts/Interactables/Teleporter.gd" id="6_2cafa"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6vanx"]
 vertices = PackedVector2Array(315, 209, 538, 179, 722, 196, 647, 330, 393, 312, 269, 285, 598, 478, 779, 448, 684, 561, 564, 540, 344, 519, 479, 555, 205, 534, 408, 587, 290, 619, 213, 601, 277, 374, 156, 352, 38, 520, 43, 384, 126, 598, 65, 571, 393, 58, 543, 29, 304, 49, 236, 162, 158, 52, 229, 38, 151, 202, 93, 113, 48, 253, 144, 284)
@@ -20,7 +20,7 @@ size = Vector2(13.6962, 60.1852)
 script = ExtResource("1_4upbw")
 
 [node name="Player" parent="." instance=ExtResource("1_xjs6k")]
-position = Vector2(521, 254)
+position = Vector2(692, 307)
 
 [node name="Interactable" parent="." instance=ExtResource("2_5t52j")]
 position = Vector2(81, 61)
@@ -38,7 +38,9 @@ position = Vector2(92, 535)
 target = NodePath("../Marker2D")
 
 [node name="CampEntry" type="Area2D" parent="."]
-script = ExtResource("5_85b4c")
+script = ExtResource("6_2cafa")
+target_scene = "res://Scenes/Camp.tscn"
+target_coordinate = Vector2(562, 602)
 
 [node name="Sprite2D" type="Sprite2D" parent="CampEntry"]
 self_modulate = Color(0, 0, 0, 1)

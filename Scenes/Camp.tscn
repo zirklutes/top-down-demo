@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://hrv1gabcbw82"]
 
 [ext_resource type="PackedScene" uid="uid://b4nlbfxbjr1dh" path="res://Scenes/Player.tscn" id="1_hlycq"]
-[ext_resource type="Script" path="res://Scripts/Interactables/CampExit.gd" id="2_013h6"]
 [ext_resource type="Texture2D" uid="uid://b7eq47jvjxoag" path="res://icon.svg" id="2_51kgv"]
+[ext_resource type="Script" path="res://Scripts/Interactables/Teleporter.gd" id="2_l8kf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbajc"]
 size = Vector2(210, 46)
@@ -16,12 +16,14 @@ offset_right = 578.0
 offset_bottom = 90.0
 text = "Camp scene"
 
-[node name="Player" parent="." instance=ExtResource("1_hlycq")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_hlycq")]
 position = Vector2(562, 602)
 
 [node name="CampExit" type="Area2D" parent="."]
 position = Vector2(564, 656)
-script = ExtResource("2_013h6")
+script = ExtResource("2_l8kf8")
+target_scene = "res://Scenes/Main.tscn"
+target_coordinate = Vector2(350, 286)
 
 [node name="Sprite2D" type="Sprite2D" parent="CampExit"]
 modulate = Color(0, 0, 0, 1)

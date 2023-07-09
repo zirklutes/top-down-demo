@@ -6,8 +6,10 @@ var input_vec = Vector2(0,0) # Used to map the input by the user to the actual m
 
 var current_interactable = null # Used to keep track of which interactable we would interact with once we press the interact button
 
-
 func _ready():
+	if Global.target_coordinate != Vector2.ZERO:
+		global_position = Global.target_coordinate
+		Global.target_coordinate = Vector2.ZERO
 	$InteractionRange.connect("area_entered", on_area_entered)
 	$InteractionRange.connect("area_exited", on_area_exited)
 

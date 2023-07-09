@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c61atydtdnyt8"]
+[gd_scene load_steps=6 format=3 uid="uid://c61atydtdnyt8"]
 
 [ext_resource type="PackedScene" uid="uid://b4nlbfxbjr1dh" path="res://Scenes/Player.tscn" id="1_xjs6k"]
 [ext_resource type="PackedScene" uid="uid://taelpv7r0iyp" path="res://Scenes/Interactable.tscn" id="2_5t52j"]
 [ext_resource type="Resource" uid="uid://kijxglja5otd" path="res://Dialogues/main.dialogue" id="3_mpyvq"]
+[ext_resource type="PackedScene" uid="uid://5dq6f1dhcl2w" path="res://Scenes/NpcScientist.tscn" id="4_icf03"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6vanx"]
+vertices = PackedVector2Array(598, 478, 647, 330, 722, 196, 779, 448, 684, 561, 342, 176, 538, 179, 393, 312, 257, 288, 277, 374, 156, 352, 564, 540, 344, 519, 479, 555, 205, 534, 408, 587, 290, 619, 213, 601, 38, 520, 43, 384, 126, 598, 65, 571, 393, 58, 543, 29, 304, 49, 151, 202, 93, 113, 158, 52, 229, 38, 48, 253, 144, 284)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 2, 1, 7, 8), PackedInt32Array(8, 7, 9, 10), PackedInt32Array(0, 4, 11), PackedInt32Array(12, 0, 11, 13), PackedInt32Array(14, 12, 13, 15, 16, 17), PackedInt32Array(18, 19, 10, 9, 14, 20, 21), PackedInt32Array(22, 23, 6, 5), PackedInt32Array(24, 22, 5, 25), PackedInt32Array(26, 27, 28, 24, 25, 29), PackedInt32Array(29, 25, 30, 19), PackedInt32Array(19, 30, 10), PackedInt32Array(14, 17, 20)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(65, 571, 126, 598, 213, 601, 290, 619, 408, 587, 479, 555, 564, 540, 684, 561, 779, 448, 722, 196, 538, 179, 543, 29, 393, 58, 304, 49, 229, 38, 158, 52, 93, 113, 48, 253, 43, 384, 38, 520), PackedVector2Array(277, 374, 205, 534, 344, 519, 598, 478, 647, 330, 393, 312), PackedVector2Array(342, 176, 151, 202, 144, 284, 156, 352, 257, 288)])
 
 [node name="Main" type="Node2D"]
 
@@ -13,3 +19,13 @@ position = Vector2(223, 137)
 position = Vector2(81, 61)
 dialogue_resource = ExtResource("3_mpyvq")
 dialogue_start = "hello_from_a_stranger"
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_6vanx")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(627, 306)
+
+[node name="NpcScientist2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_icf03")]
+position = Vector2(92, 535)
+target = NodePath("../Marker2D")

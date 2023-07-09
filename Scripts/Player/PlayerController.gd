@@ -11,7 +11,7 @@ func _ready():
 	$InteractionRange.connect("area_entered", on_area_entered)
 	$InteractionRange.connect("area_exited", on_area_exited)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_pressed("up"):
 		input_vec.y -= 1
 	if Input.is_action_pressed("down"):

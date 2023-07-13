@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4nlbfxbjr1dh"]
+[gd_scene load_steps=7 format=3 uid="uid://b4nlbfxbjr1dh"]
 
 [ext_resource type="Script" path="res://Scripts/Player/PlayerController.gd" id="1_miis1"]
 [ext_resource type="Texture2D" uid="uid://dk46gmjxstql5" path="res://Resources/Graphics/Player/character_femaleAdventurer_sheet.png" id="2_1ad2c"]
+[ext_resource type="Script" path="res://Scripts/Inventory.gd" id="3_4hk30"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_psbu4"]
 atlas = ExtResource("2_1ad2c")
@@ -13,7 +14,7 @@ size = Vector2(36, 35)
 [sub_resource type="CircleShape2D" id="CircleShape2D_5e012"]
 radius = 26.0768
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(1, 0)
 script = ExtResource("1_miis1")
 
@@ -30,3 +31,6 @@ shape = SubResource("RectangleShape2D_a2e2q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRange"]
 shape = SubResource("CircleShape2D_5e012")
+
+[node name="Inventory" type="Node2D" parent="."]
+script = ExtResource("3_4hk30")

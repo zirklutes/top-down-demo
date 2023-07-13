@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://cypsc2c71uxl0"
+path="res://.godot/imported/fishingpond.dialogue-ac8890b13612027c456acf961b882d72.tres"
+
+[deps]
+
+source_file="res://Dialogues/fishingpond.dialogue"
+dest_files=["res://.godot/imported/fishingpond.dialogue-ac8890b13612027c456acf961b882d72.tres"]
+
+[params]
+
+defaults=true

@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 @export var speed = 300.0
+@onready var inventory = $Inventory
 
 var input_vec = Vector2(0,0) # Used to map the input by the user to the actual movement direction
-
 var current_interactable = null # Used to keep track of which interactable we would interact with once we press the interact button
 
 func _ready():

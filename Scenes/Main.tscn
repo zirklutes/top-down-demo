@@ -1,13 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://y387qnf22joa"]
+[gd_scene load_steps=14 format=3 uid="uid://y387qnf22joa"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_4upbw"]
 [ext_resource type="PackedScene" uid="uid://b4nlbfxbjr1dh" path="res://Scenes/Player.tscn" id="1_xjs6k"]
-[ext_resource type="PackedScene" uid="uid://taelpv7r0iyp" path="res://Scenes/Interactable.tscn" id="2_5t52j"]
 [ext_resource type="Resource" uid="uid://kijxglja5otd" path="res://Dialogues/main.dialogue" id="3_mpyvq"]
 [ext_resource type="Script" path="res://Scripts/Interactables/Talkable.gd" id="4_61tsl"]
 [ext_resource type="PackedScene" uid="uid://5dq6f1dhcl2w" path="res://Scenes/NpcScientist.tscn" id="4_icf03"]
+[ext_resource type="Texture2D" uid="uid://b7eq47jvjxoag" path="res://icon.svg" id="5_d2sik"]
 [ext_resource type="Script" path="res://Scripts/Interactables/Teleporter.gd" id="6_2cafa"]
 [ext_resource type="Texture2D" uid="uid://4m5ubygkmrf" path="res://Resources/Graphics/Igloo.png" id="7_sgqan"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u6w8k"]
+radius = 17.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6vanx"]
 vertices = PackedVector2Array(315, 209, 538, 179, 722, 196, 647, 330, 393, 312, 269, 285, 598, 478, 779, 448, 684, 561, 564, 540, 344, 519, 479, 555, 205, 534, 408, 587, 290, 619, 213, 601, 277, 374, 156, 352, 38, 520, 43, 384, 126, 598, 65, 571, 393, 58, 543, 29, 304, 49, 236, 162, 158, 52, 229, 38, 151, 202, 93, 113, 48, 253, 144, 284)
@@ -36,11 +39,18 @@ scale = Vector2(0.224, 0.224)
 [node name="Player" parent="." instance=ExtResource("1_xjs6k")]
 position = Vector2(692, 307)
 
-[node name="Interactable" parent="." instance=ExtResource("2_5t52j")]
+[node name="Interactable" type="Area2D" parent="."]
 position = Vector2(81, 61)
 script = ExtResource("4_61tsl")
 dialogue_resource = ExtResource("3_mpyvq")
-dialogue_start = "start"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("CircleShape2D_u6w8k")
+
+[node name="Sprite2D" type="Sprite2D" parent="Interactable"]
+self_modulate = Color(1, 1, 0.356863, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_d2sik")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
@@ -49,12 +59,13 @@ navigation_polygon = SubResource("NavigationPolygon_6vanx")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(627, 306)
 
-[node name="NpcScientist" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_icf03")]
+[node name="NpcScientist" parent="." instance=ExtResource("4_icf03")]
 position = Vector2(92, 535)
-target = NodePath("../Marker2D")
+target_points = Array[Vector2]([Vector2(300, 300), Vector2(400, 400)])
+target_animations = Array[String](["idle", "idle"])
 
 [node name="Igloo" type="Sprite2D" parent="."]
-position = Vector2(250.591, 223.679)
+position = Vector2(780, 144)
 scale = Vector2(0.224, 0.224)
 texture = ExtResource("7_sgqan")
 

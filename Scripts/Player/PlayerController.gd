@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed = 300.0
 @export var inventory_data: InventoryData 
 
-signal toggle_inventory()
+@onready var inventory_interface = $"../UI/InventoryInterface"
 
 var input_vec = Vector2(0,0) # Used to map the input by the user to the actual movement direction
 var current_interactable = null # Used to keep track of which interactable we would interact with once we press the interact button
@@ -45,4 +45,8 @@ func _unhandled_input(event: InputEvent):
 			current_interactable.interact()
 
 	if Input.is_action_just_pressed("inventory"):
-		toggle_inventory.emit()
+		toogle_inventory_interface()
+		
+		
+func toogle_inventory_interface():
+	inventory_interface.visible = !inventory_interface.visible

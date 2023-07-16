@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItemData" load_steps=4 format=3 uid="uid://dnvj531giagmf"]
+
+[ext_resource type="Script" path="res://Scripts/InventoryData/InventoryItemData.gd" id="1_2mpfa"]
+[ext_resource type="Texture2D" uid="uid://dgkxl2udef8nv" path="res://Resources/Graphics/food.png" id="2_s1b1k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5bix"]
+atlas = ExtResource("2_s1b1k")
+region = Rect2(600, 48, 100, 112)
+
+[resource]
+script = ExtResource("1_2mpfa")
+name = "Fish"
+description = "Common fish found in the North"
+stackable = true
+texture = SubResource("AtlasTexture_r5bix")

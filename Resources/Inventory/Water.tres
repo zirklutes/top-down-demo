@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItemData" load_steps=4 format=3 uid="uid://cwbq5uhovvhh3"]
+
+[ext_resource type="Script" path="res://Scripts/InventoryData/InventoryItemData.gd" id="1_qs2p4"]
+[ext_resource type="Texture2D" uid="uid://dgkxl2udef8nv" path="res://Resources/Graphics/food.png" id="2_god7s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hy7i2"]
+atlas = ExtResource("2_god7s")
+region = Rect2(400, 48, 100, 112)
+
+[resource]
+script = ExtResource("1_qs2p4")
+name = "Bottled water"
+description = "Simple water in a bottle"
+stackable = false
+texture = SubResource("AtlasTexture_hy7i2")

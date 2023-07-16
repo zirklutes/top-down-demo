@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://y387qnf22joa"]
+[gd_scene load_steps=21 format=3 uid="uid://y387qnf22joa"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_4upbw"]
 [ext_resource type="PackedScene" uid="uid://b4nlbfxbjr1dh" path="res://Scenes/Player.tscn" id="1_xjs6k"]
@@ -10,6 +10,10 @@
 [ext_resource type="Resource" uid="uid://cypsc2c71uxl0" path="res://Dialogues/fishingpond.dialogue" id="5_477tv"]
 [ext_resource type="Script" path="res://Scripts/Interactables/Teleporter.gd" id="6_2cafa"]
 [ext_resource type="Texture2D" uid="uid://4m5ubygkmrf" path="res://Resources/Graphics/Igloo.png" id="7_sgqan"]
+[ext_resource type="Resource" uid="uid://bgr33avb5swf0" path="res://TestInventory.tres" id="8_nj04y"]
+[ext_resource type="PackedScene" uid="uid://b6jwmif3p8gbp" path="res://Scenes/Inventory/Inventory.tscn" id="11_l0lt2"]
+[ext_resource type="Script" path="res://Scripts/Inventory/InventoryInterface.gd" id="12_mrppw"]
+[ext_resource type="PackedScene" uid="uid://b8rcn1orch73f" path="res://Scenes/Inventory/Slot.tscn" id="14_g05l5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8p6qr"]
 size = Vector2(1653.33, 893.333)
@@ -67,6 +71,7 @@ shape = SubResource("RectangleShape2D_8p6qr")
 
 [node name="Player" parent="." instance=ExtResource("1_xjs6k")]
 position = Vector2(694, 343)
+inventory_data = ExtResource("8_nj04y")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-4, 13)
@@ -122,6 +127,37 @@ color_ramp = SubResource("Gradient_t85xy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-25, 285)
 shape = SubResource("RectangleShape2D_1wyt1")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_mrppw")
+
+[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("11_l0lt2")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.0
+offset_top = 12.0
+offset_right = 21.0
+offset_bottom = 52.0
+grow_horizontal = 2
+
+[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("14_g05l5")]
+visible = false
+modulate = Color(1, 1, 1, 0.627451)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
 
 [connection signal="on_interacted" from="FishingHole/Dialogue" to="FishingHole" method="add_fish"]
 [connection signal="on_interacted" from="FishingHole/Dialogue" to="FishingHole/Dialogue" method="queue_free"]

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="InventoryData" load_steps=11 format=3 uid="uid://bgr33avb5swf0"]
+
+[ext_resource type="Resource" uid="uid://dnvj531giagmf" path="res://Resources/Inventory/Fish.tres" id="1_behpu"]
+[ext_resource type="Script" path="res://Scripts/InventoryData/InventoryData.gd" id="1_m06nh"]
+[ext_resource type="Script" path="res://Scripts/InventoryData/InventorySlotData.gd" id="2_3quv3"]
+[ext_resource type="Resource" uid="uid://iiyvet7mqmip" path="res://Resources/Inventory/Meat.tres" id="3_01ro7"]
+[ext_resource type="Resource" uid="uid://cwbq5uhovvhh3" path="res://Resources/Inventory/Water.tres" id="3_23pyq"]
+
+[sub_resource type="Resource" id="Resource_rjxap"]
+script = ExtResource("2_3quv3")
+inventory_item_data = ExtResource("1_behpu")
+quantity = 6
+
+[sub_resource type="Resource" id="Resource_nyr02"]
+script = ExtResource("2_3quv3")
+inventory_item_data = ExtResource("3_23pyq")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_wqgie"]
+script = ExtResource("2_3quv3")
+inventory_item_data = ExtResource("3_01ro7")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_hf5oj"]
+script = ExtResource("2_3quv3")
+inventory_item_data = ExtResource("3_01ro7")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_gexv5"]
+script = ExtResource("2_3quv3")
+inventory_item_data = ExtResource("1_behpu")
+quantity = 20
+
+[resource]
+script = ExtResource("1_m06nh")
+inventory_slots_data = Array[ExtResource("2_3quv3")]([SubResource("Resource_rjxap"), SubResource("Resource_nyr02"), SubResource("Resource_wqgie"), null, null, null, null, null, SubResource("Resource_hf5oj"), SubResource("Resource_gexv5"), null, null])

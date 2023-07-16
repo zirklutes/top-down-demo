@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItemData" load_steps=3 format=3 uid="uid://iiyvet7mqmip"]
+
+[ext_resource type="Script" path="res://Scripts/InventoryData/InventoryItemData.gd" id="1_e7s4b"]
+[ext_resource type="Texture2D" uid="uid://bxgd05rmv57q8" path="res://Resources/Inventory/FoodAtlas.tres" id="2_4rwv0"]
+
+[resource]
+script = ExtResource("1_e7s4b")
+name = "Meat"
+description = "Wild animal meat"
+stackable = true
+texture = ExtResource("2_4rwv0")

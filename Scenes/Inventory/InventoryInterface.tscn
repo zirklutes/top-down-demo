@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://f65lhmbnnkgk"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory/InventoryInterface.gd" id="1_wc1kf"]
+[ext_resource type="PackedScene" uid="uid://b6jwmif3p8gbp" path="res://Scenes/Inventory/Inventory.tscn" id="2_e4btu"]
+[ext_resource type="PackedScene" uid="uid://b8rcn1orch73f" path="res://Scenes/Inventory/Slot.tscn" id="3_6wryi"]
+
+[node name="InventoryInterface" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wc1kf")
+
+[node name="PlayerInventory" parent="." instance=ExtResource("2_e4btu")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.0
+offset_top = 12.0
+offset_right = 21.0
+offset_bottom = 52.0
+grow_horizontal = 2
+
+[node name="GrabbedSlot" parent="." instance=ExtResource("3_6wryi")]
+visible = false
+modulate = Color(1, 1, 1, 0.627451)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0

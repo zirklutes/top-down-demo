@@ -5,6 +5,9 @@ var grabbed_slot_data: InventorySlotData
 @onready var player_inventory: PanelContainer = $PlayerInventory
 @onready var grabbed_slot = $GrabbedSlot
 
+func _init():
+	Global.inventory_interface = self
+
 func _physics_process(_delta:float):
 	if grabbed_slot.visible:
 		grabbed_slot.global_position = get_global_mouse_position() + Vector2(5,5) 

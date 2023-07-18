@@ -1,9 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 300.0
-@export var inventory_data: InventoryData 
-
-@onready var inventory_interface = $"../UI/InventoryInterface"
+@onready var inventory_interface = Global.inventory_interface
 
 var input_vec = Vector2(0,0) # Used to map the input by the user to the actual movement direction
 var current_interactable = null # Used to keep track of which interactable we would interact with once we press the interact button
@@ -14,6 +12,8 @@ func _ready():
 		Global.target_coordinate = Vector2.ZERO
 	$InteractionRange.connect("area_entered", on_area_entered)
 	$InteractionRange.connect("area_exited", on_area_exited)
+	await get_tree().process_frame
+	inventory_interface.set_player_inventory_data(Global.inventory_data)
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("up"):

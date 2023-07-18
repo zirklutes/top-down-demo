@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://hrv1gabcbw82"]
+[gd_scene load_steps=6 format=3 uid="uid://hrv1gabcbw82"]
 
 [ext_resource type="PackedScene" uid="uid://b4nlbfxbjr1dh" path="res://Scenes/Player.tscn" id="1_hlycq"]
 [ext_resource type="Texture2D" uid="uid://rbpuorygflsc" path="res://Resources/Graphics/Igloo_Inside.png" id="1_jnlm5"]
+[ext_resource type="PackedScene" uid="uid://f65lhmbnnkgk" path="res://Scenes/Inventory/InventoryInterface.tscn" id="1_r07bt"]
 [ext_resource type="Script" path="res://Scripts/Interactables/Teleporter.gd" id="2_l8kf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbajc"]
@@ -21,7 +22,7 @@ offset_right = 578.0
 offset_bottom = 90.0
 text = "Camp scene"
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_hlycq")]
+[node name="Player" parent="." instance=ExtResource("1_hlycq")]
 position = Vector2(576, 562)
 scale = Vector2(2, 2)
 
@@ -39,3 +40,15 @@ shape = SubResource("RectangleShape2D_gbajc")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 visible = false
 polygon = PackedVector2Array(539, 700, 419, 670, 305, 597, 261, 511, 276, 439, 344, 370, 446, 325, 540, 303, 628, 300, 720, 306, 806, 328, 898, 374, 966, 441, 977, 517, 945, 592, 847, 666, 735, 701, 546, 701, 548, 721, 1146, 721, 1146, 52, 92, 42, 80, 721, 539, 723)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" parent="CanvasLayer" instance=ExtResource("1_r07bt")]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
+size_flags_horizontal = 4
+size_flags_vertical = 0

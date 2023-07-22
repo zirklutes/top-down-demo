@@ -1,7 +1,7 @@
 extends Control
 
 var grabbed_slot_data: InventorySlotData
-var external_inventory_owner
+var external_inventory_data
 
 @onready var player_inventory: PanelContainer = $PlayerInventory
 @onready var grabbed_slot = $GrabbedSlot
@@ -21,10 +21,10 @@ func set_player_inventory_data(inventory_data: InventoryData):
 	player_inventory.set_inventory_data(inventory_data)
 	
 	
-func set_external_inventory(_external_inventory_owner):
-	external_inventory_owner = _external_inventory_owner
+func set_external_inventory_data(_external_inventory_data):
+	external_inventory_data = _external_inventory_data
 	
-	var inventory_data = external_inventory_owner.inventory_data
+	var inventory_data = external_inventory_data
 
 	inventory_data.inventory_interact.connect(on_inventory_interact)
 	external_inventory.set_inventory_data(inventory_data)
@@ -32,8 +32,8 @@ func set_external_inventory(_external_inventory_owner):
 	external_inventory.show()
 	
 func clear_external_inventory():
-	if external_inventory_owner:		
-		var inventory_data = external_inventory_owner.inventory_data
+	if external_inventory_data:		
+		var inventory_data = external_inventory_data
 
 		inventory_data.inventory_interact.disconnect(on_inventory_interact)
 		external_inventory.clear_inventory_data(inventory_data)

@@ -52,6 +52,6 @@ func toggle_inventory_interface(external_inventory_owner = null):
 	inventory_interface.visible = !inventory_interface.visible
 		
 	if external_inventory_owner and inventory_interface.visible:
-		inventory_interface.set_external_inventory(external_inventory_owner)
+		inventory_interface.set_external_inventory_data(external_inventory_owner)
 	elif external_inventory_owner:
 		inventory_interface.clear_external_inventory()

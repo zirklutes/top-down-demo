@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://hrv1gabcbw82"]
+[gd_scene load_steps=10 format=3 uid="uid://hrv1gabcbw82"]
 
 [ext_resource type="PackedScene" uid="uid://b4nlbfxbjr1dh" path="res://Scenes/Player.tscn" id="1_hlycq"]
 [ext_resource type="Texture2D" uid="uid://rbpuorygflsc" path="res://Resources/Graphics/Igloo_Inside.png" id="1_jnlm5"]
@@ -7,21 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/Interactables/Teleporter.gd" id="2_l8kf8"]
 [ext_resource type="Texture2D" uid="uid://ccb7u22xhwrk5" path="res://Resources/Graphics/WoodenBox.png" id="5_pjgvv"]
 [ext_resource type="Script" path="res://Scenes/CampInventory.gd" id="6_hbs7f"]
-[ext_resource type="Resource" uid="uid://cwbq5uhovvhh3" path="res://Resources/Inventory/Water.tres" id="7_07ajy"]
-[ext_resource type="Script" path="res://Scripts/InventoryData/InventorySlotData.gd" id="8_cg67y"]
-[ext_resource type="Script" path="res://Scripts/InventoryData/InventoryData.gd" id="9_6don6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbajc"]
 size = Vector2(210, 46)
-
-[sub_resource type="Resource" id="Resource_k8j5m"]
-script = ExtResource("8_cg67y")
-inventory_item_data = ExtResource("7_07ajy")
-quantity = 1
-
-[sub_resource type="Resource" id="Resource_7ldu4"]
-script = ExtResource("9_6don6")
-inventory_slots_data = Array[ExtResource("8_cg67y")]([SubResource("Resource_k8j5m"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gg1fs"]
 size = Vector2(191, 101)
@@ -85,7 +73,6 @@ polygon = PackedVector2Array(605, 322, 623, 316, 624, 321, 661, 328, 710, 317, 7
 
 [node name="CampInventory" type="Area2D" parent="StorageCrates" groups=["external_inventory"]]
 script = ExtResource("6_hbs7f")
-inventory_data = SubResource("Resource_7ldu4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StorageCrates/CampInventory"]
 position = Vector2(634.5, 285.5)

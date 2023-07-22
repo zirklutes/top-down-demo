@@ -8,7 +8,7 @@ atlas = ExtResource("2_1ad2c")
 region = Rect2(16, 33, 64, 95)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2e2q"]
-size = Vector2(36, 35)
+size = Vector2(36, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5e012"]
 radius = 26.0768
@@ -23,10 +23,11 @@ scale = Vector2(0.6, 0.6)
 texture = SubResource("AtlasTexture_psbu4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7.5)
+position = Vector2(0, 17)
 shape = SubResource("RectangleShape2D_a2e2q")
 
 [node name="InteractionRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRange"]
+visible = false
 shape = SubResource("CircleShape2D_5e012")

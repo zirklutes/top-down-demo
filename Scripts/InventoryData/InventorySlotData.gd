@@ -21,7 +21,6 @@ func fully_merge_with(other_slot_data: InventorySlotData):
 	quantity += other_slot_data.quantity
 
 func create_single_slot_data():
-	#This feels confusing as it creates copy and also decrease current slot items count
 	var new_slot_data = duplicate()
 	new_slot_data.quantity = 1;
 	quantity -= 1

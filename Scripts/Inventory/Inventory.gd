@@ -8,6 +8,9 @@ func set_inventory_data(inventory_data: InventoryData):
 	inventory_data.inventory_updated.connect(populate_inventory_items)
 	populate_inventory_items(inventory_data)
 
+func clear_inventory_data(inventory_data: InventoryData):
+	inventory_data.inventory_updated.disconnect(populate_inventory_items)
+
 func populate_inventory_items(inventory_data: InventoryData):
 	for child in grid_container.get_children():
 		child.queue_free()

@@ -45,8 +45,13 @@ func _unhandled_input(event: InputEvent):
 			current_interactable.interact()
 
 	if Input.is_action_just_pressed("inventory"):
-		toogle_inventory_interface()
+		toggle_inventory_interface()
 		
 		
-func toogle_inventory_interface():
+func toggle_inventory_interface(external_inventory_owner = null):
 	inventory_interface.visible = !inventory_interface.visible
+		
+	if external_inventory_owner and inventory_interface.visible:
+		inventory_interface.set_external_inventory(external_inventory_owner)
+	elif external_inventory_owner:
+		inventory_interface.clear_external_inventory()

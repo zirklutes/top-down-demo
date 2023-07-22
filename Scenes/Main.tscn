@@ -82,7 +82,7 @@ position = Vector2(-4, 13)
 limit_left = 0
 position_smoothing_enabled = true
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NpcNavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_6vanx")
 

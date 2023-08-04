@@ -2,6 +2,8 @@ extends Sprite2D
 
 var fish = load("res://Resources/Inventory/Fish.tres")
 
+signal display_notification;
+
 func add_fish():
 	var fish_slot_data = InventorySlotData.new()
 	fish_slot_data.inventory_item_data = fish
@@ -17,8 +19,8 @@ func add_fish():
 			available_slot_index = index
 			break
 			
-	#Q. Smarter way to check if exists including 0?
-	if available_slot_index || available_slot_index == 0:
-		Global.inventory_data.drop_single_slot_data(fish_slot_data, available_slot_index)
+	if available_slot_index != null:
+		await Global.inventory_data.drop_single_slot_data(fish_slot_data, available_slot_index)
+		display_notification.emit("1 Fish added!")
 	else:
-		print("Show warning inventory full")
+		display_notification.emit("Inventory full!")

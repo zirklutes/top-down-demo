@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://y387qnf22joa"]
+[gd_scene load_steps=17 format=3 uid="uid://y387qnf22joa"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_4upbw"]
 [ext_resource type="PackedScene" uid="uid://b4nlbfxbjr1dh" path="res://Scenes/Player.tscn" id="1_xjs6k"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/Interactables/Talkable.gd" id="4_61tsl"]
 [ext_resource type="Script" path="res://Scripts/Misc/FishingHole.gd" id="4_b13qw"]
 [ext_resource type="PackedScene" uid="uid://5dq6f1dhcl2w" path="res://Scenes/NpcScientist.tscn" id="4_icf03"]
-[ext_resource type="Resource" uid="uid://cypsc2c71uxl0" path="res://Dialogues/fishingpond.dialogue" id="5_477tv"]
 [ext_resource type="Script" path="res://Scripts/Interactables/Teleporter.gd" id="6_2cafa"]
 [ext_resource type="Texture2D" uid="uid://4m5ubygkmrf" path="res://Resources/Graphics/Igloo.png" id="7_sgqan"]
 [ext_resource type="PackedScene" uid="uid://f65lhmbnnkgk" path="res://Scenes/Inventory/InventoryInterface.tscn" id="12_1cnbt"]
@@ -49,7 +48,7 @@ joint_mode = 1
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.941176, 1, 1, 1)
 z_index = -100
-position = Vector2(720, 376)
+position = Vector2(1196, 611)
 scale = Vector2(10, 10)
 texture = ExtResource("2_kqsyj")
 
@@ -68,7 +67,6 @@ polygon = PackedVector2Array(-566.667, 220, -393.333, 140, -626.667, 6.6665, -32
 [node name="Dialogue" type="Area2D" parent="FishingHole"]
 position = Vector2(-766.667, -60)
 script = ExtResource("4_61tsl")
-dialogue_resource = ExtResource("5_477tv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishingHole/Dialogue"]
 position = Vector2(760, 53.3333)
@@ -136,6 +134,12 @@ shape = SubResource("RectangleShape2D_1wyt1")
 
 [node name="InventoryInterface" parent="UI" instance=ExtResource("12_1cnbt")]
 unique_name_in_owner = true
+
+[node name="PopupPanel" type="PopupPanel" parent="UI"]
+position = Vector2i(1130, 635)
+size = Vector2i(130, 50)
+content_scale_mode = 1
+content_scale_aspect = 2
 
 [connection signal="on_interacted" from="FishingHole/Dialogue" to="FishingHole" method="add_fish"]
 [connection signal="on_interacted" from="FishingHole/Dialogue" to="FishingHole/Dialogue" method="queue_free"]
